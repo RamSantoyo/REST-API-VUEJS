@@ -61,4 +61,12 @@ const editar = () => {
     color: #000;
 }
 
+/* query mobile */
+
+@media screen and (max-width: 768px){
+    .form-tarea{
+        margin: 5% 10%;
+    }
+}
+
 </style>

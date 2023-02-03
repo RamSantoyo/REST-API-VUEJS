@@ -29,30 +29,17 @@
 
 <template>
     <button @click="regresar" class="btn return">Regresar</button>   
-    <div class="contenedor">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Estatus</th>
-                    <th>Fecha</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for=" tarea in tareas" :key="tarea.id">
-                    <td>{{tarea.id}}</td>
-                    <td>{{tarea.title}}</td>                
-                    <td>{{tarea.is_completed ? 'Completado' : 'Pendiente'}}</td>
-                    <td>{{tarea.due_date}}</td>
-                    <td class="botones">
-                        <button class="btn alert" @click="state.cambiarEstado">Editar</button>
-                        <button class="btn danger" @click="eliminar">Eliminar</button>
-                    </td>    
-                </tr>
-            </tbody>
-        </table>        
+    <div class="card">
+        <div v-for="tarea in tareas" :key="tarea.id">
+            <h2>Titulo: {{tarea.title}}</h2>            
+            <p>Fecha: {{tarea.due_date}}</p>
+            <p>Estatus: {{tarea.is_completed ? 'Completado' : 'Pendiente'}}</p>
+            <p>Descripcion: {{tarea.comments}}</p>
+            <div class="botones">
+                <button class="btn alert" @click="state.cambiarEstado">Editar</button>
+                <button class="btn danger" @click="eliminar">Eliminar</button>
+            </div>
+        </div>                 
     </div>
     <div v-if="state.estado === true">
             <FormTarea :tareas="tareas" />
@@ -61,6 +48,16 @@
 </template>
 
 <style>
+    .card{
+        width: 50%;
+        margin: 1rem auto;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: white;
+        color: black;
+        text-align: center;
+    }
 
     .alert{
         background-color: #f0ad4e;
@@ -71,7 +68,7 @@
     .danger{
         background-color: #d9534f;
         color: #fff;
-        padding: .3rem;        
+        padding: .3rem;       
     }
 
     .botones{
@@ -79,6 +76,7 @@
         justify-content: space-between;
         gap: 1rem;
         align-content: center;
+        padding: 1rem 6rem;
     }
     
     .return{
@@ -87,5 +85,22 @@
         padding: .3rem;
         width: 10%;
         margin: 1rem;
+    }
+
+
+    /*query mobile*/
+
+    @media screen and (max-width: 768px){
+        .card{
+            width: 80%;
+        }
+
+        .return{
+            width: 30%;
+        }
+
+        .botones{
+            padding: 1rem 2rem;
+        }
     }
 </style>

@@ -69,6 +69,19 @@ const agregar = () => {
     cursor: pointer;
 }
 
+/*query mobile*/
+
+@media screen and (max-width: 768px){
+    .cnt-form{
+        margin: 5% 10%;
+    }
+
+    .seleccion{
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+    }
+}
 
 
 </style>
